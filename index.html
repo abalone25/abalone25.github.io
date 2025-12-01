@@ -1,25 +1,302 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Coming Soon</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fifteen Good</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background: #f5f5f5;
+    :root {
+      --bg-gradient: radial-gradient(circle at top left, #ff7b9c, #6c5ce7 35%, #111827 80%);
+      --card-bg: rgba(17, 24, 39, 0.88);
+      --accent: #fbbf24;
+      --accent-soft: rgba(251, 191, 36, 0.14);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
     }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      color: var(--text-main);
+    }
+
+    .wrapper {
+      max-width: 960px;
+      width: 100%;
+      animation: fadeInUp 0.9s ease-out both;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 32px 28px;
+      box-shadow:
+        0 22px 45px rgba(15, 23, 42, 0.65),
+        0 0 0 1px rgba(148, 163, 184, 0.08);
+      backdrop-filter: blur(18px);
+    }
+
+    @media (min-width: 768px) {
+      .card {
+        padding: 40px 48px;
+      }
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px var(--accent-soft);
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(249, 250, 251, 0.22);
+      background: radial-gradient(circle at 30% 20%, #fbbf24, #f97316 60%, #7c3aed 100%);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .tagline-chip {
+      font-size: 0.78rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(55, 65, 81, 0.85);
+      color: var(--text-muted);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      white-space: nowrap;
+    }
+
     h1 {
-      font-size: 2.5rem;
-      color: #333;
+      font-size: 1.9rem;
+      margin: 10px 0 10px;
+      line-height: 1.15;
+    }
+
+    .highlight {
+      color: var(--accent);
+    }
+
+    .body-text {
+      max-width: 520px;
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 26px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+      font-size: 0.78rem;
+    }
+
+    .pill {
+      border-radius: 999px;
+      padding: 6px 10px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      color: var(--text-muted);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 26px;
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      padding: 10px 18px;
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(135deg, #fbbf24, #f97316);
+      color: #111827;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow:
+        0 12px 30px rgba(248, 181, 60, 0.3),
+        0 0 0 1px rgba(248, 181, 60, 0.35);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+    }
+
+    .btn-primary span.icon {
+      font-size: 1.05rem;
+      line-height: 1;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+      box-shadow:
+        0 18px 38px rgba(248, 181, 60, 0.36),
+        0 0 0 1px rgba(248, 181, 60, 0.5);
+    }
+
+    .meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .meta-strong {
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    .footer {
+      border-top: 1px solid rgba(55, 65, 81, 0.9);
+      padding-top: 16px;
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      padding-bottom: 1px;
+      border-bottom: 1px dashed rgba(156, 163, 175, 0.5);
+    }
+
+    .footer a:hover {
+      color: #e5e7eb;
+      border-bottom-style: solid;
+    }
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(18px);
+        filter: blur(4px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Coming Soon</h1>
+  <div class="wrapper">
+    <div class="card">
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        <span>Design-forward commerce tooling</span>
+      </div>
+
+      <div class="brand-row">
+        <div class="logo">
+          <span class="logo-mark">15</span>
+          <span>Fifteen&nbsp;Good</span>
+        </div>
+        <span class="tagline-chip">Monetizing creative libraries, at scale</span>
+      </div>
+
+      <h1>
+        Turning<span class="highlight"> dormant art</span><br />
+        into active revenue.
+      </h1>
+
+      <p class="body-text">
+        Fifteen Good is a design-centric platform built to help studios, brands, and
+        makers unlock the value of their existing creative libraries. We connect
+        artwork, data, and marketplaces to spin up product catalogs in days, not months.
+      </p>
+
+      <div class="pill-row">
+        <span class="pill">• Creative library monetization</span>
+        <span class="pill">• Print-on-demand + marketplaces</span>
+        <span class="pill">• Data-driven product creation</span>
+      </div>
+
+      <div class="actions">
+        <!-- Contact link: email is not shown on the page, only in the link -->
+        <a class="btn-primary" href="mailto:theknutsons@gmail.com?subject=Fifteen%20Good%20Inquiry">
+          <span>Contact us</span>
+          <span class="icon">→</span>
+        </a>
+        <div class="meta">
+          <span class="meta-strong">Currently in private build.</span>
+          <span>Vendor + collaborator inquiries welcome.</span>
+        </div>
+      </div>
+
+      <div class="footer">
+        <span>© <span class="meta-strong">Fifteen Good</span> · All rights reserved.</span>
+        <div class="footer-links">
+          <!-- TODO: point these to real URLs or pages when ready -->
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/returns.html">Return Policy</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
