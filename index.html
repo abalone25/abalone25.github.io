@@ -3,300 +3,551 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fifteen Good</title>
+  <title>PS Made For You | Products That Feel Personal</title>
+  <meta name="description" content="PS Made For You creates expressive apparel, accessories, home décor, and giftable products designed to help people show who they are." />
   <style>
     :root {
-      --bg-gradient: radial-gradient(circle at top left, #ff7b9c, #6c5ce7 35%, #111827 80%);
-      --card-bg: rgba(17, 24, 39, 0.88);
-      --accent: #fbbf24;
-      --accent-soft: rgba(251, 191, 36, 0.14);
-      --text-main: #f9fafb;
-      --text-muted: #9ca3af;
+      --ink: #17202a;
+      --muted: #5d6875;
+      --cream: #fff8ef;
+      --coral: #ff6b5f;
+      --gold: #f7b84b;
+      --teal: #1fb7a6;
+      --blue: #314de8;
+      --pink: #ff8fc7;
+      --paper: #ffffff;
+      --shadow: 0 24px 70px rgba(23, 32, 42, 0.16);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; }
 
     body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(255, 143, 199, 0.35), transparent 28%),
+        radial-gradient(circle at 85% 18%, rgba(31, 183, 166, 0.28), transparent 26%),
+        linear-gradient(135deg, #fff8ef 0%, #f7fbff 52%, #fff2f8 100%);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
       min-height: 100vh;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      background: var(--bg-gradient);
+    }
+
+    header {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 28px 0;
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 24px;
-      color: var(--text-main);
+      justify-content: space-between;
+      gap: 20px;
     }
 
-    .wrapper {
-      max-width: 960px;
-      width: 100%;
-      animation: fadeInUp 0.9s ease-out both;
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      font-size: 1.2rem;
     }
 
-    .card {
-      background: var(--card-bg);
-      border-radius: 24px;
-      padding: 32px 28px;
-      box-shadow:
-        0 22px 45px rgba(15, 23, 42, 0.65),
-        0 0 0 1px rgba(148, 163, 184, 0.08);
-      backdrop-filter: blur(18px);
+    .logo-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--blue), var(--coral));
+      color: white;
+      box-shadow: 0 12px 30px rgba(49, 77, 232, 0.25);
+      font-weight: 950;
     }
 
-    @media (min-width: 768px) {
-      .card {
-        padding: 40px 48px;
-      }
+    .pill {
+      border: 1px solid rgba(23, 32, 42, 0.12);
+      background: rgba(255,255,255,0.68);
+      backdrop-filter: blur(10px);
+      padding: 10px 16px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .hero {
+      width: min(1180px, calc(100% - 40px));
+      margin: 36px auto 0;
+      display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
+      gap: 48px;
+      align-items: center;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--text-muted);
-      margin-bottom: 18px;
-    }
-
-    .eyebrow-dot {
-      width: 7px;
-      height: 7px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(23,32,42,0.1);
       border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 0 5px var(--accent-soft);
+      padding: 8px 14px;
+      font-size: 0.86rem;
+      color: var(--muted);
+      font-weight: 800;
+      margin-bottom: 24px;
     }
 
-    .brand-row {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-
-    .logo {
-      font-size: 2.1rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .logo-mark {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      border: 1px solid rgba(249, 250, 251, 0.22);
-      background: radial-gradient(circle at 30% 20%, #fbbf24, #f97316 60%, #7c3aed 100%);
-      font-size: 0.9rem;
-      font-weight: 700;
-    }
-
-    .tagline-chip {
-      font-size: 0.78rem;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(55, 65, 81, 0.85);
-      color: var(--text-muted);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      white-space: nowrap;
+    .eyebrow span {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 0 7px rgba(31,183,166,0.12);
     }
 
     h1 {
-      font-size: 1.9rem;
-      margin: 10px 0 10px;
-      line-height: 1.15;
+      font-size: clamp(3.1rem, 7vw, 6.6rem);
+      line-height: 0.89;
+      letter-spacing: -0.085em;
+      margin: 0 0 28px;
+      max-width: 820px;
     }
 
-    .highlight {
-      color: var(--accent);
+    .gradient-word {
+      background: linear-gradient(90deg, var(--blue), var(--coral), var(--gold));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
-    .body-text {
-      max-width: 520px;
-      font-size: 0.98rem;
-      line-height: 1.7;
-      color: var(--text-muted);
-      margin-bottom: 26px;
+    .hero-copy {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      line-height: 1.55;
+      color: #3f4a56;
+      max-width: 650px;
+      margin-bottom: 30px;
     }
 
-    .pill-row {
+    .cta-row {
       display: flex;
+      gap: 14px;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 28px;
-      font-size: 0.78rem;
     }
 
-    .pill {
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
       border-radius: 999px;
-      padding: 6px 10px;
-      border: 1px solid rgba(148, 163, 184, 0.55);
-      color: var(--text-muted);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      box-shadow: 0 14px 36px rgba(23,32,42,0.16);
     }
 
-    .actions {
+    .button.primary {
+      color: #fff;
+      background: var(--ink);
+    }
+
+    .button.secondary {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(23,32,42,0.11);
+      color: var(--ink);
+      box-shadow: none;
+    }
+
+    .coming-soon {
+      color: var(--muted);
+      font-weight: 750;
+      font-size: 0.95rem;
+    }
+
+    .product-cloud {
+      position: relative;
+      min-height: 650px;
+    }
+
+    .card {
+      position: absolute;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(23,32,42,0.09);
+      border-radius: 28px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .product-card {
+      width: 230px;
+      min-height: 250px;
+    }
+
+    .product-visual {
+      height: 145px;
+      border-radius: 22px;
+      margin-bottom: 14px;
+      position: relative;
+      overflow: hidden;
+      background: #f2f4f7;
+    }
+
+    .shirt { background: linear-gradient(135deg, #222, #4a4f59); }
+    .tote { background: linear-gradient(135deg, #e7d7bf, #fff3db); }
+    .mug { background: linear-gradient(135deg, #fff, #dff7ff); }
+    .pillow { background: linear-gradient(135deg, #ffeff7, #ffe2bd); }
+    .phone { background: linear-gradient(135deg, #111827, #314de8); }
+
+    .product-visual::after {
+      content: "";
+      position: absolute;
+      inset: 24px;
+      border-radius: 18px;
+      border: 3px dashed rgba(255,255,255,0.72);
+      transform: rotate(-6deg);
+    }
+
+    .product-card h3 {
+      margin: 0 0 6px;
+      font-size: 1.04rem;
+      letter-spacing: -0.035em;
+    }
+
+    .product-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.35;
+      font-weight: 650;
+    }
+
+    .card-one { top: 16px; left: 40px; transform: rotate(-7deg); }
+    .card-two { top: 70px; right: 20px; transform: rotate(7deg); }
+    .card-three { top: 285px; left: 0; transform: rotate(5deg); }
+    .card-four { top: 335px; right: 65px; transform: rotate(-5deg); }
+    .card-five { top: 500px; left: 190px; transform: rotate(4deg); }
+
+    .stat-card {
+      top: 225px;
+      left: 215px;
+      width: 230px;
+      background: var(--ink);
+      color: #fff;
+      transform: rotate(-1deg);
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 2.2rem;
+      letter-spacing: -0.07em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-card span {
+      display: block;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .section {
+      width: min(1180px, calc(100% - 40px));
+      margin: 90px auto 0;
+    }
+
+    .section h2 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      letter-spacing: -0.07em;
+      line-height: 0.98;
+      max-width: 780px;
+      margin: 0 0 18px;
+    }
+
+    .section-intro {
+      max-width: 760px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 1.12rem;
+      margin: 0 0 34px;
+      font-weight: 650;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .category {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(23,32,42,0.09);
+      border-radius: 28px;
+      padding: 24px;
+      min-height: 178px;
+      box-shadow: 0 18px 44px rgba(23,32,42,0.08);
+    }
+
+    .category .icon {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, rgba(49,77,232,0.12), rgba(255,107,95,0.18));
+      font-size: 1.4rem;
+    }
+
+    .category h3 {
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+      letter-spacing: -0.035em;
+    }
+
+    .category p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.45;
+      font-weight: 620;
+      font-size: 0.94rem;
+    }
+
+    .identity-band {
+      margin-top: 90px;
+      background: var(--ink);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .identity-band::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 25% 35%, rgba(255,107,95,0.5), transparent 22%),
+        radial-gradient(circle at 72% 50%, rgba(31,183,166,0.44), transparent 24%),
+        radial-gradient(circle at 50% 90%, rgba(247,184,75,0.38), transparent 20%);
+      opacity: 0.85;
+    }
+
+    .identity-inner {
+      position: relative;
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 84px 0;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .identity-inner h2 {
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      letter-spacing: -0.075em;
+      line-height: 0.92;
+      margin: 0;
+    }
+
+    .identity-inner p {
+      margin: 0;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.6;
+      font-size: 1.18rem;
+      font-weight: 650;
+    }
+
+    .tag-wall {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      align-items: center;
-      margin-bottom: 26px;
+      margin-top: 26px;
     }
 
-    .btn-primary {
+    .tag-wall span {
+      padding: 10px 14px;
       border-radius: 999px;
-      padding: 10px 18px;
-      border: none;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.86);
+      font-weight: 800;
       font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      background: linear-gradient(135deg, #fbbf24, #f97316);
-      color: #111827;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow:
-        0 12px 30px rgba(248, 181, 60, 0.3),
-        0 0 0 1px rgba(248, 181, 60, 0.35);
-      transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
     }
 
-    .btn-primary span.icon {
-      font-size: 1.05rem;
-      line-height: 1;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.03);
-      box-shadow:
-        0 18px 38px rgba(248, 181, 60, 0.36),
-        0 0 0 1px rgba(248, 181, 60, 0.5);
-    }
-
-    .meta {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .meta-strong {
-      color: #e5e7eb;
-      font-weight: 500;
-    }
-
-    .footer {
-      border-top: 1px solid rgba(55, 65, 81, 0.9);
-      padding-top: 16px;
-      margin-top: 24px;
+    footer {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 42px 0;
+      color: var(--muted);
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
       justify-content: space-between;
-      align-items: center;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 14px;
+      gap: 20px;
       flex-wrap: wrap;
+      font-weight: 700;
     }
 
-    .footer a {
-      color: var(--text-muted);
-      text-decoration: none;
-      padding-bottom: 1px;
-      border-bottom: 1px dashed rgba(156, 163, 175, 0.5);
-    }
-
-    .footer a:hover {
-      color: #e5e7eb;
-      border-bottom-style: solid;
-    }
-
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(18px);
-        filter: blur(4px);
+    @media (max-width: 980px) {
+      .hero, .identity-inner {
+        grid-template-columns: 1fr;
       }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
+
+      .product-cloud {
+        min-height: 560px;
       }
+
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 680px) {
+      header { align-items: flex-start; }
+      .pill { display: none; }
+      .hero { margin-top: 14px; }
+      .product-cloud { min-height: auto; display: grid; grid-template-columns: 1fr; gap: 16px; }
+      .card { position: relative; inset: auto; transform: none !important; width: 100%; }
+      .product-card { min-height: auto; }
+      .stat-card { width: 100%; }
+      .category-grid { grid-template-columns: 1fr; }
+      .section, .identity-band { margin-top: 64px; }
+      footer { padding-bottom: 28px; }
     }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <div class="card">
-      <div class="eyebrow">
-        <span class="eyebrow-dot"></span>
-        <span>Design-forward commerce tooling</span>
-      </div>
+  <div class="page">
+    <header>
+      <a class="brand-mark" href="#top" aria-label="PS Made For You home">
+        <span class="logo-badge">PS</span>
+        <span>PS Made For You</span>
+      </a>
+      <div class="pill">Expressive products for every kind of person</div>
+    </header>
 
-      <div class="brand-row">
-        <div class="logo">
-          <span class="logo-mark">15</span>
-          <span>Fifteen&nbsp;Good</span>
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <div class="eyebrow"><span></span> A consumer brand built around self-expression</div>
+          <h1 id="hero-title">Products made to feel <span class="gradient-word">like you.</span></h1>
+          <p class="hero-copy">
+            PS Made For You creates apparel, personal accessories, home décor, gifts, and everyday goods designed to help people show what they love, where they belong, and who they are.
+          </p>
+          <div class="cta-row">
+            <a class="button primary" href="#catalog">Explore the vibe</a>
+            <a class="button secondary" href="#mission">Our mission</a>
+            <span class="coming-soon">Amazon storefront coming soon.</span>
+          </div>
         </div>
-        <span class="tagline-chip">Monetizing creative libraries, at scale</span>
-      </div>
 
-      <h1>
-        Turning<span class="highlight"> dormant art</span><br />
-        into active revenue.
-      </h1>
+        <div class="product-cloud" aria-label="Product category collage">
+          <article class="card product-card card-one">
+            <div class="product-visual shirt"></div>
+            <h3>Graphic Apparel</h3>
+            <p>Statement pieces for humor, hobbies, hometowns, and identity.</p>
+          </article>
 
-      <p class="body-text">
-        Fifteen Good is a design-centric platform built to help studios, brands, and
-        makers unlock the value of their existing creative libraries. We connect
-        artwork, data, and marketplaces to spin up product catalogs in days, not months.
-      </p>
+          <article class="card product-card card-two">
+            <div class="product-visual tote"></div>
+            <h3>Personal Accessories</h3>
+            <p>Carry, wear, gift, and use designs that feel personally chosen.</p>
+          </article>
 
-      <div class="pill-row">
-        <span class="pill">• Creative library monetization</span>
-        <span class="pill">• Print-on-demand + marketplaces</span>
-        <span class="pill">• Data-driven product creation</span>
-      </div>
+          <article class="card stat-card">
+            <strong>One brand. Many lives.</strong>
+            <span>A growing catalog of designs across product types, styles, interests, and occasions.</span>
+          </article>
 
-      <div class="actions">
-        <!-- Contact link: email is not shown on the page, only in the link -->
-        <a class="btn-primary" href="mailto:theknutsons@gmail.com?subject=Fifteen%20Good%20Inquiry">
-          <span>Contact us</span>
-          <span class="icon">→</span>
-        </a>
-        <div class="meta">
-          <span class="meta-strong">Currently in private build.</span>
-          <span>Vendor + collaborator inquiries welcome.</span>
+          <article class="card product-card card-three">
+            <div class="product-visual mug"></div>
+            <h3>Everyday Favorites</h3>
+            <p>Mugs, drinkware, desk goods, and practical products with personality.</p>
+          </article>
+
+          <article class="card product-card card-four">
+            <div class="product-visual pillow"></div>
+            <h3>Home Décor</h3>
+            <p>Decorative pieces that help a space feel more personal and alive.</p>
+          </article>
+
+          <article class="card product-card card-five">
+            <div class="product-visual phone"></div>
+            <h3>Giftable Goods</h3>
+            <p>Easy-to-love products for birthdays, holidays, milestones, and inside jokes.</p>
+          </article>
         </div>
-      </div>
+      </section>
 
-      <div class="footer">
-        <span>© <span class="meta-strong">Fifteen Good</span> · All rights reserved.</span>
-        <div class="footer-links">
-          <!-- TODO: point these to real URLs or pages when ready -->
-          <a href="/privacy.html">Privacy Policy</a>
-          <a href="/returns.html">Return Policy</a>
+      <section class="section" id="catalog" aria-labelledby="catalog-title">
+        <h2 id="catalog-title">A catalog built for all the ways people express themselves.</h2>
+        <p class="section-intro">
+          From bold graphics to subtle designs, PS Made For You is built around variety: different products, different personalities, different rooms, different communities, and different reasons to smile.
+        </p>
+
+        <div class="category-grid">
+          <article class="category">
+            <div class="icon">👕</div>
+            <h3>Apparel</h3>
+            <p>T-shirts, sweatshirts, seasonal drops, statement graphics, and wearable designs.</p>
+          </article>
+          <article class="category">
+            <div class="icon">🎒</div>
+            <h3>Accessories</h3>
+            <p>Personal items that bring favorite designs into everyday routines.</p>
+          </article>
+          <article class="category">
+            <div class="icon">🏡</div>
+            <h3>Home Décor</h3>
+            <p>Wall art, pillows, accents, and pieces that make a home feel specific.</p>
+          </article>
+          <article class="category">
+            <div class="icon">🎁</div>
+            <h3>Gifts</h3>
+            <p>Products for the people, places, hobbies, memories, and moments that matter.</p>
+          </article>
         </div>
-      </div>
-    </div>
+      </section>
+
+      <section class="identity-band" id="mission" aria-labelledby="mission-title">
+        <div class="identity-inner">
+          <h2 id="mission-title">Made for fans. Made for families. Made for moods. Made for you.</h2>
+          <div>
+            <p>
+              Our mission is simple: create a wide world of expressive products that help customers find something that feels like it was made with them in mind — whether it reflects their humor, hometown, hobby, faith, personality, style, or favorite way to spend a Saturday.
+            </p>
+            <div class="tag-wall" aria-label="Design themes">
+              <span>Funny</span>
+              <span>Local</span>
+              <span>Outdoorsy</span>
+              <span>Sporty</span>
+              <span>Family</span>
+              <span>Pet Lovers</span>
+              <span>Coastal</span>
+              <span>Trendy</span>
+              <span>Classic</span>
+              <span>Giftable</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© <span id="year"></span> PS Made For You</span>
+      <span>Amazon storefront coming soon</span>
+    </footer>
   </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
